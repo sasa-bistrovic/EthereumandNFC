@@ -219,46 +219,46 @@ public class SendTransactionActivity extends AppCompatActivity {
 
                 String password = "secr3t";
 
-                String sasakey="";
+                String myPrivatekey="";
 
-                String sasakey2="";
+                String myPrivatekey2="";
 
-                boolean sasaboolean=false;
+                boolean myPrivateboolean=false;
 
                 for (int i=11; i<=26;i++) {
-                    String sasapage=bytesToHex(isoDep.readPages(i)).substring(0,8);
-                    for (int j=1; j<=sasapage.length();j++) {
-                        if (!sasaboolean==true) {
-                            if (!sasapage.substring(j - 1, j).equals("0")) {
-                                sasaboolean = true;
+                    String myPrivatepage=bytesToHex(isoDep.readPages(i)).substring(0,8);
+                    for (int j=1; j<=myPrivatepage.length();j++) {
+                        if (!myPrivateboolean==true) {
+                            if (!myPrivatepage.substring(j - 1, j).equals("0")) {
+                                myPrivateboolean = true;
                             }
                         }
                     }
-                    sasakey=sasakey+sasapage;
+                    myPrivatekey=myPrivatekey+myPrivatepage;
                 }
 
                 for (int i=29; i<=36;i++) {
-                    String sasapage=bytesToHex(isoDep.readPages(i)).substring(0,8);
-                    for (int j=1; j<=sasapage.length();j++) {
-                        if (!sasaboolean==true) {
-                            if (!sasapage.substring(j - 1, j).equals("0")) {
-                                sasaboolean = true;
+                    String myPrivatepage=bytesToHex(isoDep.readPages(i)).substring(0,8);
+                    for (int j=1; j<=myPrivatepage.length();j++) {
+                        if (!myPrivateboolean==true) {
+                            if (!myPrivatepage.substring(j - 1, j).equals("0")) {
+                                myPrivateboolean = true;
                             }
                         }
                     }
-                    sasakey2=sasakey2+sasapage;
+                    myPrivatekey2=myPrivatekey2+myPrivatepage;
                 }
 
                 ECKeyPair keyPair;
 
-                if (sasaboolean==false) {
+                if (myPrivateboolean==false) {
                 } else
                 {
-                    Credentials sasa = Credentials.create(sasakey2);
-                    readRecipientAddress = sasa.getEcKeyPair().getPublicKey().toString(16);
-                    recipientPrivateKeyString = sasa.getEcKeyPair().getPrivateKey().toString(16);
+                    Credentials myPrivate = Credentials.create(myPrivatekey2);
+                    readRecipientAddress = myPrivate.getEcKeyPair().getPublicKey().toString(16);
+                    recipientPrivateKeyString = myPrivate.getEcKeyPair().getPrivateKey().toString(16);
                 }
-                if (sasaboolean==false) {
+                if (myPrivateboolean==false) {
                 }
 
                 final String newAddress = Keys.toChecksumAddress(Keys.getAddress(readRecipientAddress));

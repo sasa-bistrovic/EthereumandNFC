@@ -133,46 +133,46 @@ public class MainActivity extends AppCompatActivity {
             try {
                 String password = "secr3t";
 
-                String sasakey="";
+                String myPrivatekey="";
 
-                String sasakey2="";
+                String myPrivatekey2="";
 
-                boolean sasaboolean=false;
+                boolean myPrivateboolean=false;
 
                 for (int i=11; i<=26;i++) {
-                    String sasapage=bytesToHex(isoDep.readPages(i)).substring(0,8);
-                    for (int j=1; j<=sasapage.length();j++) {
-                        if (!sasaboolean==true) {
-                            if (!sasapage.substring(j - 1, j).equals("0")) {
-                                sasaboolean = true;
+                    String myPrivatepage=bytesToHex(isoDep.readPages(i)).substring(0,8);
+                    for (int j=1; j<=myPrivatepage.length();j++) {
+                        if (!myPrivateboolean==true) {
+                            if (!myPrivatepage.substring(j - 1, j).equals("0")) {
+                                myPrivateboolean = true;
                             }
                         }
                     }
-                    sasakey=sasakey+sasapage;
+                    myPrivatekey=myPrivatekey+myPrivatepage;
                 }
 
                 for (int i=29; i<=36;i++) {
-                    String sasapage=bytesToHex(isoDep.readPages(i)).substring(0,8);
-                    for (int j=1; j<=sasapage.length();j++) {
-                        if (!sasaboolean==true) {
-                            if (!sasapage.substring(j - 1, j).equals("0")) {
-                                sasaboolean = true;
+                    String myPrivatepage=bytesToHex(isoDep.readPages(i)).substring(0,8);
+                    for (int j=1; j<=myPrivatepage.length();j++) {
+                        if (!myPrivateboolean==true) {
+                            if (!myPrivatepage.substring(j - 1, j).equals("0")) {
+                                myPrivateboolean = true;
                             }
                         }
                     }
-                    sasakey2=sasakey2+sasapage;
+                    myPrivatekey2=myPrivatekey2+myPrivatepage;
                 }
 
                 ECKeyPair keyPair;
 
-                if (sasaboolean==false) {
+                if (myPrivateboolean==false) {
                 } else
                 {
-                    pubKeyString = sasakey;
-                    privateKeyString = sasakey2;
+                    pubKeyString = myPrivatekey;
+                    privateKeyString = myPrivatekey2;
                 }
 
-                if (sasaboolean==false) {
+                if (myPrivateboolean==false) {
                 }
 
             } catch(Exception e) {
@@ -186,9 +186,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        Credentials sasa = Credentials.create(privateKeyString);
+        Credentials myPrivate = Credentials.create(privateKeyString);
 
-        pubKeyString = sasa.getEcKeyPair().getPublicKey().toString(16);
+        pubKeyString = myPrivate.getEcKeyPair().getPublicKey().toString(16);
 
         ethAddress = Keys.toChecksumAddress(Keys.getAddress(pubKeyString));
 

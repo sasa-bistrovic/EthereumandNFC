@@ -106,48 +106,48 @@ public class ImportPrivateKeyToNFCCardActivity extends AppCompatActivity {
 
                 privateKeyString = credentials.getEcKeyPair().getPrivateKey().toString(16);
 
-                String sasakey = pubKeyString;
+                String myPrivatekey = pubKeyString;
 
-                Integer sasaindex = ((int) pubKeyString.length() / 8) + 1;
+                Integer myPrivateindex = ((int) pubKeyString.length() / 8) + 1;
 
-                for (int i = 0; i <= sasaindex * 8; i++) {
-                    if (sasakey.length() < i) {
-                        sasakey = sasakey + "0";
+                for (int i = 0; i <= myPrivateindex * 8; i++) {
+                    if (myPrivatekey.length() < i) {
+                        myPrivatekey = myPrivatekey + "0";
                     }
                 }
 
-                //showToast(" " + sasaindex + " " + sasakey.length(), this);
+                //showToast(" " + myPrivateindex + " " + myPrivatekey.length(), this);
 
-                for (int i = 1; i <= sasakey.length(); i++) {
+                for (int i = 1; i <= myPrivatekey.length(); i++) {
                     if ((i % 8) == 0) {
-                        if (i == sasakey.length()) {
-                            isoDep.writePage(((int) i / 8) + 10, hexStringToByteArray(sasakey.substring(i - 8, sasakey.length())));
+                        if (i == myPrivatekey.length()) {
+                            isoDep.writePage(((int) i / 8) + 10, hexStringToByteArray(myPrivatekey.substring(i - 8, myPrivatekey.length())));
                             break;
                         } else {
-                            isoDep.writePage(((int) i / 8) + 10, hexStringToByteArray(sasakey.substring(i - 8, i)));
+                            isoDep.writePage(((int) i / 8) + 10, hexStringToByteArray(myPrivatekey.substring(i - 8, i)));
                         }
                     }
                 }
 
-                sasakey = privateKeyString;
+                myPrivatekey = privateKeyString;
 
-                sasaindex = ((int) privateKeyString.length() / 8) + 1;
+                myPrivateindex = ((int) privateKeyString.length() / 8) + 1;
 
-                for (int i = 0; i <= sasaindex * 8; i++) {
-                    if (sasakey.length() < i) {
-                        sasakey = sasakey + "0";
+                for (int i = 0; i <= myPrivateindex * 8; i++) {
+                    if (myPrivatekey.length() < i) {
+                        myPrivatekey = myPrivatekey + "0";
                     }
                 }
 
-                //showToast(" " + sasaindex + " " + sasakey.length(), this);
+                //showToast(" " + myPrivateindex + " " + myPrivatekey.length(), this);
 
-                for (int i = 1; i <= sasakey.length(); i++) {
+                for (int i = 1; i <= myPrivatekey.length(); i++) {
                     if ((i % 8) == 0) {
-                        if (i == sasakey.length()) {
-                            isoDep.writePage(((int) i / 8) + 28, hexStringToByteArray(sasakey.substring(i - 8, sasakey.length())));
+                        if (i == myPrivatekey.length()) {
+                            isoDep.writePage(((int) i / 8) + 28, hexStringToByteArray(myPrivatekey.substring(i - 8, myPrivatekey.length())));
                             break;
                         } else {
-                            isoDep.writePage(((int) i / 8) + 28, hexStringToByteArray(sasakey.substring(i - 8, i)));
+                            isoDep.writePage(((int) i / 8) + 28, hexStringToByteArray(myPrivatekey.substring(i - 8, i)));
                         }
                     }
                 }
